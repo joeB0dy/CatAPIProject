@@ -6,16 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnGetCatData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get Cat Data!"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/inputFragmentView"
+        android:name="com.example.catapi.SpinnerFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
+        tools:layout="@layout/spinner_fragment" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/outputFragmentView"
+        android:name="com.example.catapi.DisplayFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/inputFragmentView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/display_fragment" />
 </androidx.constraintlayout.widget.ConstraintLayout>
