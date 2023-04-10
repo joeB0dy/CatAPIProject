@@ -1,22 +1,25 @@
-package com.example.catapiproject
+package com.example.catapi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.catapiproject.databinding.ActivityMainBinding
+import com.example.catapi.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 
-        //set button handler.
-        binding.btnGetCatData.setOnClickListener { printCatData() }
-
+        supportActionBar?.hide()
     }
-    fun printCatData(){
 
-    }//end printCatData
+    fun onSpinnerClick(value : String) {
+        val displayFragment = supportFragmentManager.findFragmentById(R.id.outputFragmentView) as DisplayFragment
+        displayFragment.updateDisplay(value)
+    }
+
 }
