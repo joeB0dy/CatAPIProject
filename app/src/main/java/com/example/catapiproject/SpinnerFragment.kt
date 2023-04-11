@@ -39,9 +39,17 @@ class SpinnerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = SpinnerFragmentBinding.inflate(inflater, container, false)
 
+        binding = SpinnerFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+
+        /*
         var spinnerData = ArrayList<String>()
+        spinnerData.add("Cat1")
+        spinnerData.add("Cat2")
+        spinnerData.add("Cat3")
+        spinnerData.add("Cat4")
+        spinnerData.add("Cat5")
 
         var arrayAdapter = ArrayAdapter<String>(this,
             R.layout.simple_spinner_dropdown_item,
@@ -55,7 +63,7 @@ class SpinnerFragment : Fragment() {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                //binding.theTextView.text = binding.theSpinner.selectedItem.toString()
+                binding.theTextView.text = binding.theSpinner.selectedItem.toString()
             }
 
         }
@@ -63,6 +71,8 @@ class SpinnerFragment : Fragment() {
         binding.theSpinner.setOnClickListener { printCatData() }
 
         return binding.root
+        */
+
     }
 
     // method to interact with API
@@ -84,11 +94,15 @@ class SpinnerFragment : Fragment() {
                     // uses a string template
                     var theCat : JSONObject = catsArray.getJSONObject(i)
 
-                    //now get the properties we want:  name and description
+                    //now get the properties we want:  name, temperament, and origin
                     Log.i("MainActivity", "Cat name: ${theCat.getString("name")}")
                     activityCallback?.onSpinnerClick("${theCat.getString("name")}")
-                    Log.i("MainActivity", "Cat description: ${theCat.getString("description")}")
-                    activityCallback?.onSpinnerClick("${theCat.getString("description")}")
+                    Log.i("MainActivity", "Cat Image: ${theCat.getString("url")}")
+                    activityCallback?.onSpinnerClick("${theCat.getString("url")}")
+                    Log.i("MainActivity", "Cat temperament: ${theCat.getString("temperament")}")
+                    activityCallback?.onSpinnerClick("${theCat.getString("temperament")}")
+                    Log.i("MainActivity", "Cat origin: ${theCat.getString("origin")}")
+                    activityCallback?.onSpinnerClick("${theCat.getString("origin")}")
                 }//end for
             },
             Response.ErrorListener {
