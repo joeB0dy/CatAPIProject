@@ -3,6 +3,8 @@ package com.example.catapiproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
+import androidx.fragment.app.FragmentActivity
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -10,8 +12,9 @@ import com.android.volley.toolbox.Volley
 import com.example.catapiproject.databinding.ActivityMainBinding
 import org.json.JSONArray
 import org.json.JSONObject
+import coil.load
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : FragmentActivity(), ImageFragment.ImageListener {
     private lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun printCatData(){
+        //initialize stuff.
+
+
         var catURL =    "https://api.thecatapi.com/v1/breeds" + "?api-key=live_jbbUIHNI836wIyACai0hKSLUeHcfqXv3DAV68q0c5xRGX7mvFJSP52DVwut4XgvY"
 
         val queue = Volley.newRequestQueue(this)    //imported Volley.
@@ -51,5 +57,17 @@ class MainActivity : AppCompatActivity() {
 
         //add to RequestQueue
         queue.add(stringRequest)
+
+
     }//end printCatData
+
+    //what will be passed back on Callback to Fragment.
+    override fun onButtonClick(img: ImageView, name: String, temp: String, origin: String) {
+        //
+        val imageFragment = supportFragmentManager.findFragmentById((R.id.CatImageView))  as ImageFragment
+        val textFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as ImageFragment
+
+        textFragment.setText(name, temp, origin) // change above.
+
+    }
 }
