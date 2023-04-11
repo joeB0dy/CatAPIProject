@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import coil.load
 import com.android.volley.toolbox.ImageLoader.ImageListener
 import com.example.catapiproject.databinding.FragmentImageBinding
 
@@ -19,7 +20,7 @@ class ImageFragment : Fragment() {
     var activityCallBack: ImageFragment.ImageListener? = null
 
     interface ImageListener{
-        fun onButtonClick(img: ImageView, name: String, temp: String, origin: String) //i guess when the button clicks it will pass an image
+        fun onButtonClick(imgID: Int, name: String, temp: String, origin: String) //i guess when the button clicks it will pass an image
     }
 
     override fun onAttach(context: Context){
@@ -33,7 +34,7 @@ class ImageFragment : Fragment() {
     }
 
     private fun buttonClicked(view: View){
-        activityCallBack?.onButtonClick(binding.CatImageView, binding.tvName.text.toString(), binding.tvTemperment.toString(), binding.tvOrigin.toString() )
+        activityCallBack?.onButtonClick(binding.CatImageView.id, binding.tvName.text.toString(), binding.tvTemperment.toString(), binding.tvOrigin.toString() )
     }
     //end of Activity CallBack Stuff.
 
@@ -60,9 +61,11 @@ class ImageFragment : Fragment() {
 
         return binding.root
     }
-    fun setImageView( img: ImageView){
+    fun setImageView( img: Int){
        //material for function to be passed indirectly in Activity.
+        var ImgURL = "https://api.thecatapi.com/v1/images"
 
+        binding.CatImageView.load(ImgURL + img.toString())
 
     }
 
