@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import kotlin.random.Random
+
 import com.example.catapi.databinding.DisplayFragmentBinding
 
-class DisplayFragment : Fragment() {
-    // TODO: Implement the ViewModel
+class DisplayFragment() : Fragment() {
 
     private lateinit var binding : DisplayFragmentBinding
 
@@ -22,20 +23,19 @@ class DisplayFragment : Fragment() {
         return binding.root
     }
 
-    /*fun updateDisplay(value : String) {
-       //if value is =, then clear input, and put result in display
-        Log.i("DisplayFragment", value)
-        var output = binding.Input.text.toString()
-        var finalOutput= output + value
-        binding.Input.setText(finalOutput)
-    }*/
 
     fun updateDisplay(value : String) {
         //if value is =, then clear input, and put result in display
         Log.i("DisplayFragment", value)
+        //var catValue = Random.nextInt(1, 5)
+        //var imageName = "@drawable/cat" + catValue
+        //var resourceID = resources.getIdentifier(imageName, "drawable", getPackageName())
+
+
         binding.CatName.setText(binding.CatName.text.toString() + value)
         //binding.CatImage.setImageResource(resourceID)
-        binding.CatDescription.setText(binding.CatDescription.text.toString() + value)
+        binding.CatTemperament.setText(binding.CatTemperament.text.toString() + value)
+        binding.CatOrigin.setText(binding.CatOrigin.text.toString() + value)
 
     }
 }
