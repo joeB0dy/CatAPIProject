@@ -17,6 +17,31 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout="@layout/spinner_fragment" />
 
+    <TextView
+        android:id="@+id/theTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="129dp"
+        android:text="Cats"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/theSpinner" />
+
+    <Spinner
+        android:id="@+id/theSpinner"
+        android:layout_width="170dp"
+        android:layout_height="76dp"
+        android:contentDescription="Cats"
+        android:text="Cats"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.013"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/outputFragmentView"
         android:name="com.example.catapi.DisplayFragment"
